@@ -1,21 +1,38 @@
-import React, { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 
 const BuyListContext = createContext();
 
-export const BuyListProvider = ({ children }) => {
+const BuyListProvider = ({ children }) => {
   const [newProducts, setNewProducts] = useState([]);
 
   const addIngredients = (ingredients) => {
-    setNewProducts((prevProducts) => [...prevProducts, ...ingredients])
+    setNewProducts(ingredients);
+    return ingredients;
+  };
+
+  const clearIngredients = () => {
+    setNewProducts([]);
   };
 
   return (
-    <BuyListContext.Provider value={{ newProducts, addIngredients }}>
+    <BuyListContext.Provider
+      value={{
+        newProducts,
+        addIngredients,
+        clearIngredients,
+      }}
+    >
       {children}
     </BuyListContext.Provider>
-  )
-}
+  );
+};
 
-export const useBuyListContext = () => {
-  return useContext(BuyListContext);
-}
+const useBuyListContext = () => {
+  const context = useContext(BuyListContext);
+  if (!context) {
+    throw new Error('useBuyListContext must be used within a PassDataProvider');
+  }
+  return context;
+};
+
+export { useBuyListContext, BuyListProvider };

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Outlet } from 'react-router-dom';
 import NavToBuyList from '../navigations/NavToBuyList';
 import RandomRecipe from '../components/RandomRecipe';
 import SliderRecipes from '../components/SliderRecipes';
@@ -47,7 +46,6 @@ const RecipesPage = () => {
   return (
     <div>
       <h1>Recipes</h1>
-      <Outlet />
       <NavToBuyList />
       <RandomRecipe recipes={recipes} />
       {loading ? (
