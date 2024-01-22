@@ -6,7 +6,7 @@ const NavToRecipes = () => {
     <div>
       <nav>
         <ul>
-          <li>
+          <li className="link to-recipes">
             <Link to="/recipes">Go to Recipes</Link>
           </li>
         </ul>

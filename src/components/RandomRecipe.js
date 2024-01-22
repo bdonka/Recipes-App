@@ -22,20 +22,23 @@ const RandomRecipe = ({ recipes }) => {
   const { strMeal, strInstructions, strMealThumb } = randomRecipe;
 
   return (
-    <div>
-      <h2>Recipe</h2>
-      <div>
-        <img src={strMealThumb} alt={strMeal} />
+    <div className="random-recipe">
+      <div className="random-recipe-image-container">
+        <figure className="random-recipe-figure">
+          <img className="random-recipe-image" src={strMealThumb} alt={strMeal} />
+        </figure>
       </div>
-      <h3>{strMeal}</h3>
-      <p>{strInstructions}</p>
+      <div className="random-recipe-text-container">
+        <h2 className="random-recipe-title">{strMeal}</h2>
+        <p className="random-recipe-description">{strInstructions}</p>
 
-      <h3>Ingredients:</h3>
-      <ul>
-        {getIngredientsList(randomRecipe).map((ingredient, index) => (
-          <li key={index}>{ingredient}</li>
-        ))}
-      </ul>
+        <h3 className="random-recipe-ingredients-title">Ingredients:</h3>
+        <ul className="random-recipe-list">
+          {getIngredientsList(randomRecipe).map((ingredient, index) => (
+            <li className="random-recipe-item" key={index}>{ingredient}</li>
+          ))}
+        </ul>
+      </div>
     </div>
   )
 };

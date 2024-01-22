@@ -4,8 +4,8 @@ import NavToBuyList from '../navigations/NavToBuyList';
 
 const WelcomePage = () => {
   return (
-    <div>
-      <h1>Welcome in Recipe App</h1>
+    <div className="welcome-page">
+      <h1 className="welcome-page-title">Welcome in Recipe App</h1>
       <NavToRecipes />
       <NavToBuyList />
     </div>

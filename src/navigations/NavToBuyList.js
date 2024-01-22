@@ -6,7 +6,7 @@ const NavToBuyList = () => {
     <div>
       <nav>
         <ul>
-          <li>
+          <li className="link to-buylist">
             <Link to="/buy-list">Go to Buy List</Link>
           </li>
         </ul>

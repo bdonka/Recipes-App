@@ -10,10 +10,10 @@ const BuyListPage = () => {
   };
 
   return (
-    <div>
-      <h1>Buy List</h1>
-      <AddProducts ingredients={ingredientsData} addIngredients={addIngredientToBuyList} />
+    <div className="buylist-page">
+      <h1 className="buylist-page">Buy List</h1>
       <NavToRecipes />
+      <AddProducts ingredients={ingredientsData} addIngredients={addIngredientToBuyList} />
     </div>
   )
 }

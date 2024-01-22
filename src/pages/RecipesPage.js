@@ -8,7 +8,6 @@ import { fetchRecipeData } from '../data/GetApiData';
 const RecipesPage = () => {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [addedRecipes, setAddedRecipes] = useState([]);
 
   useEffect(() => {
     const fetchRecipe = async () => {
@@ -38,25 +37,19 @@ const RecipesPage = () => {
 
   };
 
-  const handleClearAddedRecipes = () => {
-    setAddedRecipes([]);
-    alert('All added recipes cleared!');
-  };
-
   return (
-    <div>
-      <h1>Recipes</h1>
+    <div className="recipes-page">
+      <h1 className="recipes-page-title">Recipes</h1>
       <NavToBuyList />
       <RandomRecipe recipes={recipes} />
+      <SliderRecipes recipes={recipes} />
       {loading ? (
-        <p>Loading...</p>
+        <p className="recipes-page-loading">Loading...</p>
       ) : (
-        <div>
-          <button onClick={handleClearAddedRecipes}>Clear Added Recipes</button>
+        <div className="recipes-list">
           <RecipeList recipes={recipes} onRecipeClick={handleRecipeClick} />
         </div>
       )}
-      <SliderRecipes recipes={recipes} />
     </div>
   );
 }

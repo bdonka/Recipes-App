@@ -16,20 +16,24 @@ const SingleRecipe = ({ recipe }) => {
   };
 
   return (
-    <div>
-      <h2>{recipe.strMeal}</h2>
-      <div>
-        <img src={recipe.strMealThumb} alt={recipe.strMeal} />
+    <div className="single-recipe">
+      <div className="single-recipe-image-container">
+        <h2 className="single-recipe-title">{recipe.strMeal}</h2>
+        <figure >
+          <img className="single-recipe-image" src={recipe.strMealThumb} alt={recipe.strMeal} />
+        </figure>
+        <p className="single-recipe-description">{recipe.strInstructions}</p>
       </div>
-      <p>{recipe.strInstructions}</p>
 
-      <h3>Ingredients:</h3>
-      <button onClick={handleAddToBuyList}>Add to Buy List</button>
-      <ul>
-        {ingredients.map((ingredient, index) => (
-          <li key={index}>{ingredient}</li>
-        ))}
-      </ul>
+      <div className="single-recipe-text-container">
+        <h3 className="single-recipe-ingredients">Ingredients:</h3>
+        <ul className="single-recipe-list">
+          {ingredients.map((ingredient, index) => (
+            <li className="single-recipe-item" key={index}>{ingredient}</li>
+          ))}
+        </ul>
+        <button className="btn single-recipe-button" onClick={handleAddToBuyList}>Add to Buy List</button>
+      </div>
     </div>
   )
 }

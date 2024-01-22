@@ -26,29 +26,35 @@ const RecipeList = ({ recipes }) => {
     );
   }) : [];
   return (
-    <div>
-      <input
-        type="text"
-        placeholder="Filter by ingredient"
-        value={ingredientFilter}
-        onChange={handleFilterChange}
-      />
-      <ul>
-        {filteredRecipes.map((recipe) => (
-          <li key={recipe.idMeal} onClick={() => handleRecipeClick(recipe)}>
-            <div>
-              <img
-                src={recipe.strMealThumb}
-                alt={recipe.strMeal}
-                style={{ maxWidth: '100px', marginRight: '10px' }}
-              />
-              <span>{recipe.strMeal}</span>
-            </div>
-          </li>
-        ))}
-      </ul>
+    <>
+      <div className="recipes-list-container">
+        <input
+          className="recipes-list-filter"
+          type="text"
+          placeholder="Filter by ingredient"
+          value={ingredientFilter}
+          onChange={handleFilterChange}
+        />
+        <ul className="recipes-list-list">
+          {filteredRecipes.map((recipe) => (
+            <li className="recipes-list-item" key={recipe.idMeal} onClick={() => handleRecipeClick(recipe)}>
+              <div className="recipes-list-item-container">
+                <figure>
+                  <img
+                    className="recipes-list-image"
+                    src={recipe.strMealThumb}
+                    alt={recipe.strMeal}
+                    style={{ maxWidth: '100px', marginRight: '10px' }}
+                  />
+                </figure>
+                <span className="recipes-list-title">{recipe.strMeal}</span>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
       {selectedRecipe && <ModalRecipe selectedRecipe={selectedRecipe} addToBuyList={addToBuyList} />}
-    </div>
+    </>
   );
 };
 

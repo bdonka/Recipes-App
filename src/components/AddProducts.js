@@ -70,18 +70,20 @@ const AddProducts = () => {
 
 
   return (
-    <div>
+    <div className="add-products">
       <form>
-        <input type="text" placeholder="Product" value={inputProduct} onChange={handleProductChange} />
-        <input type="text" placeholder="Quantity" value={inputQuantity} onChange={handleQuantityChange} />
-        <button onClick={handleSubmit}>Add Product</button>
-        <button onClick={handleRemoveAll}>Remove All</button>
+        <input className="add-products-product-name" type="text" placeholder="Product" value={inputProduct} onChange={handleProductChange} />
+        <input className="add-products-product-quality" type="text" placeholder="Quantity" value={inputQuantity} onChange={handleQuantityChange} />
       </form>
-      <ul>
+      <div className="btn-container">
+        <button className="add-products-add-btn" onClick={handleSubmit}>Add Product</button>
+        <button className="add-products-remove-all-btn" onClick={handleRemoveAll}>Remove All</button>
+      </div>
+      <ul className="add-products-list">
         {newProducts.map((product, index) => (
-          <li key={index}>
+          <li className="add-products-item" key={index}>
             {product}
-            <button onClick={() => handleRemove(index)}>Remove</button>
+            <button className="add-products-remove-btn" onClick={() => handleRemove(index)}>Remove</button>
           </li>
         ))}
       </ul>
