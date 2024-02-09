@@ -7,7 +7,7 @@ const ProductList = ({ newProducts, onIncrement, onDecrement, onRemove, onInputC
     <ul className="add-products-list">
       {newProducts && newProducts.length > 0 && newProducts.map((product, index) => {
         if (!product) return null;
-        const { name: productName, quantity, measure: productMeasure } = product;
+        const { food: productName, quantity, measure: productMeasure } = product;
 
         return (
           <li className="add-products-item" key={index}>
@@ -18,10 +18,10 @@ const ProductList = ({ newProducts, onIncrement, onDecrement, onRemove, onInputC
                 onChange={(e) => onInputChange(index, parseInt(e.target.value))}
               />
               <p>{productMeasure}</p>
-              <button className="quantity-button" onClick={() => onIncrement(index)}>
+              <button className="increase-quantity-button" onClick={() => onIncrement(index)}>
                 +
               </button>
-              <button className="quantity-button" onClick={() => onDecrement(index)}>
+              <button className="decrease-quantity-button" onClick={() => onDecrement(index)}>
                 -
               </button>
             </div>
