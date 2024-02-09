@@ -22,6 +22,8 @@ const ModalRecipe = ({ selectedRecipe, addToBuyList }) => {
     }
   };
 
+  console.log('Selected Recipe:', selectedRecipe);
+
   return (
     <div>
       <Modal

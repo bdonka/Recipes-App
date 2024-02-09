@@ -69,15 +69,15 @@ const SliderRecipes = ({ recipes }) => {
     <>
       <Slider {...settings} className="slider-recipes">
         {recipes &&
-          recipes.map((recipe) => (
-            <div key={recipe.idMeal} onClick={() => handleRecipeClick(recipe)}>
+          recipes.map((recipe, index) => (
+            <div key={index} onClick={() => handleRecipeClick(recipe)}>
               <img
-                src={recipe.strMealThumb}
-                alt={recipe.strMeal}
-                title={recipe.strMeal}
-                data-imageurl={recipe.strMealThumb}
+                src={recipe.image}
+                alt={recipe.label}
+                title={recipe.label}
+                data-imageurl={recipe.image}
               />
-              <h3>{recipe.strMeal}</h3>
+              <h3>{recipe.label}</h3>
             </div>
           ))}
       </Slider>

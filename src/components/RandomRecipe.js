@@ -19,18 +19,17 @@ const RandomRecipe = ({ recipes }) => {
   if (!randomRecipe || Object.keys(randomRecipe).length === 0) {
     return <p>No recipes available.</p>
   }
-  const { strMeal, strInstructions, strMealThumb } = randomRecipe;
+  const { label, image } = randomRecipe;
 
   return (
     <div className="random-recipe">
       <div className="random-recipe-image-container">
         <figure className="random-recipe-figure">
-          <img className="random-recipe-image" src={strMealThumb} alt={strMeal} />
+          <img className="random-recipe-image" src={image} alt={label} />
         </figure>
       </div>
       <div className="random-recipe-text-container">
-        <h2 className="random-recipe-title">{strMeal}</h2>
-        <p className="random-recipe-description">{strInstructions}</p>
+        <h2 className="random-recipe-title">{label}</h2>
 
         <h3 className="random-recipe-ingredients-title">Ingredients:</h3>
         <ul className="random-recipe-list">

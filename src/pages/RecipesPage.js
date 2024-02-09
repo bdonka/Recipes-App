@@ -13,8 +13,9 @@ const RecipesPage = () => {
     const fetchRecipe = async () => {
       try {
         const response = await fetchRecipeData();
-        if (response && response.meals) {
-          setRecipes(response.meals);
+        if (response && response.hits) {
+          const recipesData = response.hits.map(hit => hit.recipe);
+          setRecipes(recipesData);
         } else {
           console.error('Invalid response format:', response);
         }
@@ -27,10 +28,6 @@ const RecipesPage = () => {
 
     fetchRecipe();
   }, []);
-
-  if (loading) {
-    return <p>Loading...</p>;
-  }
 
   const handleRecipeClick = (recipe) => {
     console.log('Recipe clicked:', recipe);

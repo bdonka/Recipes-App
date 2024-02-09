@@ -14,12 +14,17 @@ const BuyListProvider = ({ children }) => {
     setNewProducts([]);
   };
 
+  const onInputChange = (products) => {
+    console.log("Updated products:", products);
+  };
+
   return (
     <BuyListContext.Provider
       value={{
         newProducts,
         addIngredients,
         clearIngredients,
+        onInputChange,
       }}
     >
       {children}

@@ -9,6 +9,8 @@ const BuyListPage = () => {
     setIngredientsData((prevIngredients) => [...prevIngredients, ingredient]);
   };
 
+
+
   return (
     <div className="buylist-page">
       <h1 className="buylist-page">Buy List</h1>
