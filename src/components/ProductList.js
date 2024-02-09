@@ -15,9 +15,11 @@ const ProductList = ({ newProducts, onIncrement, onDecrement, onRemove, onInputC
             <div className="quantity-container">
               <input
                 value={quantity}
-                onChange={(e) => onInputChange(index, parseInt(e.target.value))}
+                onChange={(e) => onInputChange(index, e)}
               />
-              <p>{productMeasure}</p>
+              {productMeasure !== '<unit>' && (
+                <p>{productMeasure}</p>
+              )}
               <button className="increase-quantity-button" onClick={() => onIncrement(index)}>
                 +
               </button>

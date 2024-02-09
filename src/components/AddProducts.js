@@ -11,7 +11,7 @@ const AddProducts = () => {
     setProducts(prevProducts => {
       const cleanedInputProductName = productName.trim().toLowerCase();
       const existingProductIndex = prevProducts.findIndex(
-        (product) => product.name === cleanedInputProductName
+        (product) => product.food === cleanedInputProductName
       );
 
       if (existingProductIndex !== -1) {
@@ -20,7 +20,7 @@ const AddProducts = () => {
         onInputChange(updatedProducts);
         return updatedProducts;
       } else {
-        const newProduct = { name: cleanedInputProductName, quantity: parseInt(productQuantity) };
+        const newProduct = { food: cleanedInputProductName, quantity: parseInt(productQuantity) };
         const updatedProducts = [...prevProducts, newProduct];
         onInputChange(updatedProducts);
         return updatedProducts;
@@ -64,12 +64,15 @@ const AddProducts = () => {
     onInputChange([]);
   }, [onInputChange]);
 
-  const handleInputChange = useCallback((index, value) => {
+  const handleInputChange = useCallback((index, e) => {
+    const { value } = e.target;
     setProducts(prevProducts => {
-      const updatedProducts = [...prevProducts];
-      if (updatedProducts[index]) {
-        updatedProducts[index].quantity = value;
-      }
+      const updatedProducts = prevProducts.map((product, i) => {
+        if (i === index) {
+          return { ...product, quantity: parseInt(value) };
+        }
+        return product;
+      });
       onInputChange(updatedProducts);
       return updatedProducts;
     });
