@@ -6,8 +6,7 @@ const BuyListProvider = ({ children }) => {
   const [newProducts, setNewProducts] = useState([]);
 
   const addIngredients = (ingredients) => {
-    setNewProducts(ingredients);
-    return ingredients;
+    setNewProducts((prev) => ([...prev, ...ingredients]));
   };
 
   const clearIngredients = () => {
@@ -15,7 +14,7 @@ const BuyListProvider = ({ children }) => {
   };
 
   const onInputChange = (products) => {
-    console.log("Updated products:", products);
+    setNewProducts(products);
   };
 
   return (

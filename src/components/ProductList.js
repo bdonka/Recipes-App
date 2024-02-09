@@ -3,6 +3,15 @@ import React from 'react';
 const ProductList = ({ newProducts, onIncrement, onDecrement, onRemove, onInputChange }) => {
   console.log('newProducts in ProductList:', newProducts);
 
+  const groupedProducts = {};
+  newProducts.forEach(product => {
+    if (product) {
+      if (!groupedProducts[product.food]) {
+        groupedProducts[product.food] = { ...product };
+      } else groupedProducts[product.food].quantity += product.quantity;
+    }
+  })
+
   return (
     <ul className="add-products-list">
       {newProducts && newProducts.length > 0 && newProducts.map((product, index) => {
