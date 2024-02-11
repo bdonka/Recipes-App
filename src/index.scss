@@ -463,3 +463,18 @@ code {
     }
   }
 }
+
+.own-recipe {
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
+  &__recipe-container {
+    display: flex;
+  }
+  &__name-container,
+  &__image-container {
+    display: flex;
+    flex-direction: column;
+  }
+}

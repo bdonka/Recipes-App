@@ -4,6 +4,7 @@ const BuyListContext = createContext();
 
 const BuyListProvider = ({ children }) => {
   const [newProducts, setNewProducts] = useState([]);
+  const [allRecipes, setAllRecipes] = useState([]);
 
   const addIngredients = (ingredients) => {
     setNewProducts((prev) => ([...prev, ...ingredients]));
@@ -17,6 +18,12 @@ const BuyListProvider = ({ children }) => {
     setNewProducts(products);
   };
 
+  const addRecipe = (recipe) => {
+    setAllRecipes((prevRecipes) => [...prevRecipes, recipe]);
+  }
+
+  console.log('allRecipes:', allRecipes)
+
   return (
     <BuyListContext.Provider
       value={{
@@ -24,6 +31,8 @@ const BuyListProvider = ({ children }) => {
         addIngredients,
         clearIngredients,
         onInputChange,
+        allRecipes,
+        addRecipe
       }}
     >
       {children}

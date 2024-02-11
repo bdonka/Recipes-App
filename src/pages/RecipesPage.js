@@ -5,10 +5,12 @@ import SliderRecipes from '../components/SliderRecipes';
 import RecipeList from '../components/RecipeList';
 import OwnRecipeButton from '../components/OwnRecipeButton';
 import { fetchRecipeData } from '../data/GetApiData';
+import { useBuyListContext } from '../data/PassData';
 
 const RecipesPage = () => {
   const [loading, setLoading] = useState(true);
   const [recipes, setRecipes] = useState([]);
+  const { allRecipes } = useBuyListContext();
 
   useEffect(() => {
     const fetchRecipe = async () => {
@@ -37,6 +39,14 @@ const RecipesPage = () => {
   return (
     <div className="recipes-page">
       <h1 className="recipes-page-title">Recipes</h1>
+      <div>
+        <h2>All Recipes</h2>
+        <ul>
+          {allRecipes.map((recipe, index) => (
+            <li key={index}>{recipe.label}</li>
+          ))}
+        </ul>
+      </div>
       <NavToBuyList />
       <OwnRecipeButton />
       <RandomRecipe recipes={recipes} />
