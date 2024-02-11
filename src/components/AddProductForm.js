@@ -20,20 +20,22 @@ const AddProductForm = ({ onAddProduct }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        className="add-products-product-name"
-        type="text"
-        placeholder="Product Name"
-        value={productName}
-        onChange={handleProductChange}
-      />
-      <input
-        className="add-products-product-quality"
-        type="text"
-        placeholder="Quantity"
-        value={productQuantity}
-        onChange={handleQuantityChange}
-      />
+      <div className="add-products-inputs-container">
+        <input
+          className="add-products-product-name"
+          type="text"
+          placeholder="Product Name"
+          value={productName}
+          onChange={handleProductChange}
+        />
+        <input
+          className="add-products-product-quality"
+          type="text"
+          placeholder="Quantity"
+          value={productQuantity}
+          onChange={handleQuantityChange}
+        />
+      </div>
       <button type="submit" className="add-products-add-btn">
         Add Product
       </button>

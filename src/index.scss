@@ -239,7 +239,7 @@ code {
     justify-content: center;
   }
   &-item {
-    width: calc(20% - .5rem);
+    min-width: calc(20% - .5rem); 
     display: flex;
     justify-content: center;
     padding: .25rem;
@@ -265,7 +265,7 @@ code {
   }
   @media screen and (max-width: 1299px) {
     .recipes-list-item {
-      width: calc(25% - 0.5rem);
+      min-width: calc(25% - 0.5rem);
     }
   }
 
@@ -338,16 +338,22 @@ code {
   margin: 1.25rem;
   padding: 1.25rem;
   border-top: 1px solid black;
-  min-width: 350px;
+  min-width: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
 
   form {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
     margin-bottom: 1.25rem;
+  }
+
+  &-inputs-container {
+    display: flex;
+    flex-direction: column;
+    margin-right: 1rem;
   }
 
   &-product-name,
@@ -378,6 +384,10 @@ code {
     }
   }
 
+  &-remove-all-btn {
+    background-color: #f44336;
+  }
+
   &-list {
     width: 100%;
     list-style: none;
@@ -391,8 +401,41 @@ code {
     padding: .625rem;
     margin: .325rem 0;
     border-radius: 4px;
-
   }
+  .product-name-container {
+    min-width: 200px;
+    margin-right: 1rem;
+  }
+  .quantity-product-name {
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+  .quantity-container {
+    display: flex;
+    margin: 0 1rem;
+    justify-content: space-between;
+  }
+
+  .quantity-value {
+    font-size: 1rem;
+    width: 4rem;
+    text-align: center;
+    border: 1px solid purple;
+    margin-right: 1rem;
+  }
+  .quantity-measure-value {
+    order: -1;
+    margin-right: .5rem;
+  }
+
+  .increase-quantity-button,
+  .decrease-quantity-button {
+    background-color: #343b34;
+    margin: 0 .5rem;
+    min-width: 3rem;
+    aspect-ratio: 1;
+  }
+
   &-remove-btn {
     background-color: #f44336;
     color: #fff;

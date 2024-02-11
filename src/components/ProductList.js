@@ -20,14 +20,17 @@ const ProductList = ({ newProducts, onIncrement, onDecrement, onRemove, onInputC
 
         return (
           <li className="add-products-item" key={index}>
-            {productName}
+            <div className="product-name-container">
+              <p className="quantity-product-name">{productName}</p>
+            </div>
             <div className="quantity-container">
               <input
+                className="quantity-value"
                 value={quantity}
                 onChange={(e) => onInputChange(index, e)}
               />
               {productMeasure !== '<unit>' && (
-                <p>{productMeasure}</p>
+                <p className="quantity-measure-value">{productMeasure}</p>
               )}
               <button className="increase-quantity-button" onClick={() => onIncrement(index)}>
                 +
@@ -35,10 +38,10 @@ const ProductList = ({ newProducts, onIncrement, onDecrement, onRemove, onInputC
               <button className="decrease-quantity-button" onClick={() => onDecrement(index)}>
                 -
               </button>
+              <button className="add-products-remove-btn" onClick={() => onRemove(index)}>
+                Remove
+              </button>
             </div>
-            <button className="add-products-remove-btn" onClick={() => onRemove(index)}>
-              Remove
-            </button>
           </li>
         )
       })}
