@@ -18,8 +18,8 @@ const BuyListProvider = ({ children }) => {
     setNewProducts(products);
   };
 
-  const addRecipe = (recipe) => {
-    setAllRecipes((prevRecipes) => [...prevRecipes, recipe]);
+  const addRecipe = (recipe, ingredients) => {
+    setAllRecipes((prevRecipes) => [...prevRecipes, { ...recipe, ingredients: [ingredients] }]);
   }
 
   console.log('allRecipes:', allRecipes)

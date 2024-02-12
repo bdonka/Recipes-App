@@ -46,8 +46,8 @@ const RecipeList = ({ recipes }) => {
           onChange={handleFilterChange}
         />
         <ul className="recipes-list-list">
-          {filteredRecipes.map((recipe) => (
-            <li className="recipes-list-item" key={recipe.uri} onClick={() => handleRecipeClick(recipe)}>
+          {filteredRecipes.map((recipe, index) => (
+            <li className="recipes-list-item" key={index} onClick={() => handleRecipeClick(recipe)}>
               <div className="recipes-list-item-container">
                 <figure>
                   <img

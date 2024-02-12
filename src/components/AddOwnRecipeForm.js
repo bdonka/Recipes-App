@@ -1,8 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { useBuyListContext } from "../data/PassData";
 
 const AddOwnRecipeForm = () => {
-  const buyListContext = useContext(useBuyListContext)
+  const buyListContext = useBuyListContext();
   const [recipeData, setRecipeData] = useState({
     label: '',
     ingredients: [],
@@ -57,8 +57,8 @@ const AddOwnRecipeForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Wysłano formularz:', recipeData);
-    buyListContext.addRecipe(recipeData);
+    console.log('Wysłano formularz:', recipeData, ingredientInput);
+    buyListContext.addRecipe(recipeData, ingredientInput);
   }
 
   return (

@@ -12,6 +12,10 @@ const RecipesPage = () => {
   const [recipes, setRecipes] = useState([]);
   const { allRecipes } = useBuyListContext();
 
+  const mergedRecipes = [...allRecipes, ...recipes]
+
+  console.log(mergedRecipes);
+
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
@@ -49,13 +53,13 @@ const RecipesPage = () => {
       </div>
       <NavToBuyList />
       <OwnRecipeButton />
-      <RandomRecipe recipes={recipes} />
-      <SliderRecipes recipes={recipes} />
+      <RandomRecipe recipes={mergedRecipes} />
+      <SliderRecipes recipes={mergedRecipes} />
       {loading ? (
         <p className="recipes-page-loading">Loading...</p>
       ) : (
         <div className="recipes-list">
-          <RecipeList recipes={recipes} onRecipeClick={handleRecipeClick} />
+          <RecipeList recipes={mergedRecipes} onRecipeClick={handleRecipeClick} />
         </div>
       )}
     </div>
