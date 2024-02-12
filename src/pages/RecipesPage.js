@@ -14,8 +14,6 @@ const RecipesPage = () => {
 
   const mergedRecipes = [...allRecipes, ...recipes]
 
-  console.log(mergedRecipes);
-
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
@@ -43,14 +41,6 @@ const RecipesPage = () => {
   return (
     <div className="recipes-page">
       <h1 className="recipes-page-title">Recipes</h1>
-      <div>
-        <h2>All Recipes</h2>
-        <ul>
-          {allRecipes.map((recipe, index) => (
-            <li key={index}>{recipe.label}</li>
-          ))}
-        </ul>
-      </div>
       <NavToBuyList />
       <OwnRecipeButton />
       <RandomRecipe recipes={mergedRecipes} />

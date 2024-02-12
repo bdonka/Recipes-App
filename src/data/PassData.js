@@ -18,11 +18,9 @@ const BuyListProvider = ({ children }) => {
     setNewProducts(products);
   };
 
-  const addRecipe = (recipe, ingredients) => {
-    setAllRecipes((prevRecipes) => [...prevRecipes, { ...recipe, ingredients: [ingredients] }]);
+  const addRecipe = (recipe) => {
+    setAllRecipes((prevRecipes) => [...prevRecipes, recipe]);
   }
-
-  console.log('allRecipes:', allRecipes)
 
   return (
     <BuyListContext.Provider

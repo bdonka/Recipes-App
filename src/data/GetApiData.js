@@ -5,8 +5,6 @@ const fetchRecipeData = async (from = 0) => {
     const response = await fetch(`${API_URL}&from=${from}`);
     const data = await response.json();
 
-    console.log('Recipe data:', data.hits);
-
     if (data && data.hits) {
       return data;
     } else {

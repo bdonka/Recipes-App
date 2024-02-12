@@ -24,8 +24,9 @@ const AddOwnRecipeForm = () => {
 
   const handleIngredientChange = (e) => {
     const { name, value } = e.target;
+    const parsedValue = name === 'quantity' ? parseFloat(value) : value;
     setIngredientInput(prevState => ({
-      ...prevState, [name]: value
+      ...prevState, [name]: parsedValue
     }));
   }
 
@@ -57,8 +58,7 @@ const AddOwnRecipeForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Wysłano formularz:', recipeData, ingredientInput);
-    buyListContext.addRecipe(recipeData, ingredientInput);
+    buyListContext.addRecipe(recipeData);
   }
 
   return (
@@ -72,16 +72,18 @@ const AddOwnRecipeForm = () => {
           <label className="own-recipe__image-label">Image:</label>
           <input className="own-recipe__image-input" type="file" name="image" accept="image/*" onChange={handleImageChange} />
           {recipeData.image && (
-            <img src={recipeData.image} alt="Recipe" style={{ maxWidth: '200px', maxHeight: '200px' }} />
+            <img src={recipeData.image} alt="Recipe" style={{ maxWidth: '100px', maxHeight: '100px' }} />
           )}
         </div>
       </div>
       <div className="own-recipe__ingredients-label-container">
         <label className="own-recipe-ingredients">Ingredients:</label>
         <div className="own-recipe__ingredient-data-container">
-          <input className="own-recipe__ingredient-name" type="text" name="food" value={ingredientInput.food} placeholder="Ingredient" onChange={handleIngredientChange} />
-          <input className="own-recipe__ingredient-quantity" type="text" name="quantity" value={ingredientInput.quantity} placeholder="Quantity" onChange={handleIngredientChange} />
-          <input className="own-recipe__ingredient-measure" type="text" name="measure" value={ingredientInput.measure} placeholder="Measure" onChange={handleIngredientChange} />
+          <div className="own-recipe__ingredient-inputs-container">
+            <input className="own-recipe__ingredient-name" type="text" name="food" value={ingredientInput.food} placeholder="Ingredient" onChange={handleIngredientChange} />
+            <input className="own-recipe__ingredient-quantity" type="text" name="quantity" value={ingredientInput.quantity} placeholder="Quantity" onChange={handleIngredientChange} />
+            <input className="own-recipe__ingredient-measure" type="text" name="measure" value={ingredientInput.measure} placeholder="Measure" onChange={handleIngredientChange} />
+          </div>
           <button className="own-recipe__add-ingredient-btn" type="button" onClick={addIngredient}>Add more ingredients</button>
         </div>
         <ul>
